@@ -41,3 +41,5 @@ dal install system-tools --force
 dal install systemctl-shortcuts --force
 dal install text-processing --force
 dal install git-essentials --force
+
+source ~/.bashrc
