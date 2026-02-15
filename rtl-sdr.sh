@@ -61,5 +61,8 @@ echo "Reloading udev rules..."
 sudo udevadm control --reload-rules
 sudo udevadm trigger
 
+echo "Blacklisting dvb_usb_rtl28xxu driver..."
+echo 'blacklist dvb_usb_rtl28xxu' | sudo tee --append /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf
+
 echo "=== RTL-SDR installation complete ==="
-echo "You may need to unplug and replug your RTL-SDR device."
+echo "You may need to reboot your device"
