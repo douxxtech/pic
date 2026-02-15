@@ -9,5 +9,5 @@ curl -sSL https://pic.douxx.tech/ | bash
 
 you can choose a specific file by passing `?file_no_ext` to the url.  
 ```bash
-curl -sSL https://pic.douxx.tech?rtl-sdr/ | bash # returns the rtl-sdr.sh file
+curl -sSL https://pic.douxx.tech/?rtl-sdr | bash # returns the rtl-sdr.sh file
 ```
