@@ -2,7 +2,11 @@
 
 $baseUrl = 'https://raw.githubusercontent.com/douxxtech/pic/refs/heads/main/';
 
-$file = $_SERVER['QUERY_STRING'] ?? 'pic';
+$file = $_SERVER['QUERY_STRING'] ?? '';
+
+if ($file === '') {
+    $file = 'pic';
+}
 
 if (!preg_match('/^[a-zA-Z0-9_-]+$/', $file)) {
     http_response_code(400);
