@@ -24,10 +24,12 @@ clear\
 pfetch
 }' ~/.bashrc
 
+PS1="    PS1='\[\e[38;5;250m\][\[\e[38;5;141m\]\u\[\e[38;5;110m\]@\h\[\e[38;5;250m\]] \[\e[38;5;215m\]\w › \[\e[0m\]'"
+
 if grep -q "PS1=" ~/.bashrc; then
-    sed -i "s|^    PS1=.*|    PS1='\\\[\\\e[38;5;250m\\\][\\\[\\\e[38;5;141m\\\]\\\u\\\[\\\e[38;5;110m\\\]@\\\h\\\[\\\e[38;5;250m\\\]] \\\[\\\e[38;5;215m\\\]\\\w › \\\[\\\e[0m\\\]'|" ~/.bashrc
+    awk -v new="$PS1" '{sub(/^[[:space:]]*PS1=.*/, new)}1' ~/.bashrc > ~/.bashrc.tmp && mv ~/.bashrc.tmp ~/.bashrc
 else
-    echo "    PS1='\\\[\\\e[38;5;250m\\\][\\\[\\\e[38;5;141m\\\]\\\u\\\[\\\e[38;5;110m\\\]@\\\h\\\[\\\e[38;5;250m\\\]] \\\[\\\e[38;5;215m\\\]\\\w › \\\[\\\e[0m\\\]'" >> ~/.bashrc
+    printf "\n%s\n" "$PS1" >> ~/.bashrc
 fi
 
 # install nodejs & npm
